@@ -51,43 +51,46 @@ const Header: React.FC<HeaderProps> = ({ activeSection, onNavigate }) => {
             </div>
           </div>
 
-          {/* Status Indicators */}
-          <div className="hidden lg:flex items-center space-x-6 mr-8">
-            <div className="flex items-center space-x-2 text-xs">
-              <div className="flex items-center space-x-1">
-                <Database className="w-3 h-3 text-green-400" />
-                <span className="text-slate-300">KB</span>
-              </div>
-              <div className="flex items-center space-x-1">
-                <Wifi className="w-3 h-3 text-blue-400" />
-                <span className="text-slate-300">Search</span>
-              </div>
-              <div className="flex items-center space-x-1">
-                <Zap className="w-3 h-3 text-purple-400" />
-                <span className="text-slate-300">AI</span>
+          {/* Desktop Navigation and Status */}
+          <div className="hidden md:flex items-center space-x-8">
+            {/* Status Indicators */}
+            <div className="hidden lg:flex items-center space-x-6">
+              <div className="flex items-center space-x-2 text-xs">
+                <div className="flex items-center space-x-1">
+                  <Database className="w-3 h-3 text-green-400" />
+                  <span className="text-slate-300">KB</span>
+                </div>
+                <div className="flex items-center space-x-1">
+                  <Wifi className="w-3 h-3 text-blue-400" />
+                  <span className="text-slate-300">Search</span>
+                </div>
+                <div className="flex items-center space-x-1">
+                  <Zap className="w-3 h-3 text-purple-400" />
+                  <span className="text-slate-300">AI</span>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => onNavigate(item.id)}
-                className={`relative text-sm font-medium transition-all duration-300 group ${
-                  activeSection === item.id
-                    ? 'text-indigo-400'
-                    : 'text-slate-300 hover:text-white'
-                }`}
-              >
-                {item.label}
-                <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-indigo-400 to-purple-400 transform transition-transform duration-300 ${
-                  activeSection === item.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                }`}></span>
-              </button>
-            ))}
-          </nav>
+            {/* Navigation Links */}
+            <nav className="flex items-center space-x-8">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => onNavigate(item.id)}
+                  className={`relative text-sm font-medium transition-all duration-300 group ${
+                    activeSection === item.id
+                      ? 'text-indigo-400'
+                      : 'text-slate-300 hover:text-white'
+                  }`}
+                >
+                  {item.label}
+                  <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-indigo-400 to-purple-400 transform transition-transform duration-300 ${
+                    activeSection === item.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                  }`}></span>
+                </button>
+              ))}
+            </nav>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
